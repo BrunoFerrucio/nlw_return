@@ -1,11 +1,13 @@
 module.exports = {
-  content: [
-    './pages/**/*.tsx',
-    './components/**/*.tsx',
-    "./src/**/*.tsx",
-  ],
+  content: ["./src/**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        brand: {
+          500: '#8257e6',
+        }
+      }
+    },
   },
   plugins: [],
 }
