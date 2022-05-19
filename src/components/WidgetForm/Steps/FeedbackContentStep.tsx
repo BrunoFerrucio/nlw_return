@@ -1,6 +1,7 @@
 import { ArrowLeft, Camera } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import { FeedbackType, feedbackTypes } from ".."
+import { api } from "../../../lib/api";
 import { CloseButton } from "../../CloseButton";
 import { ScreenshotButton } from "../ScreenshotButton";
 
@@ -18,9 +19,10 @@ export function FeedbackContentStep({feedbackType, onFeedbackRestartRequested, o
   function handleSubmitFeedback(event: FormEvent) {
     event.preventDefault(); // Desativa o reload da página (o reload é o comportamento padrão do HTML com formulários)
 
-    console.log({
-      screenshot,
-      comment
+    api.post('/feedbacks', {
+      typeof: feedbackType,
+      comment: comment,
+      screenshot: screenshot,
     })
 
     onFeedbackSent();
